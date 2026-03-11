@@ -1,9 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Voilab\Serviceanswer;
 
-class Container extends \Pimple\Container {
+use Pimple\Container as PimpleContainer;
 
+class Container extends PimpleContainer
+{
     /**
      * @param mixed[] $config Global configuration
      */
@@ -11,21 +15,21 @@ class Container extends \Pimple\Container {
     {
         parent::__construct();
 
-        $this['config'] = array_merge(array(
-            'wording' => array(
-                'devMessagePrefix' => 'Technical message: '
-            )
-        ), $config);
+        $this['config'] = array_merge([
+            'wording' => [
+                'devMessagePrefix' => 'Technical message: ',
+            ],
+        ], $config);
 
-        $this['answer'] = $this->factory(function ($c) {
+        $this['answer'] = $this->factory(function (self $c) {
             return new Answer($c);
         });
 
-        $this['error'] = $this->factory(function ($c) {
+        $this['error'] = $this->factory(function (self $c) {
             $answer = new Answer($c);
             $answer->success = false;
+
             return $answer;
         });
-
     }
 }

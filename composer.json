@@ -7,17 +7,22 @@
     },
     "license": "MIT",
     "require": {
-        "php": "^7.2|^8.0",
+        "php": ">=8.1",
         "pimple/pimple": "^3.0"
     },
     "require-dev": {
-        "overtrue/phplint": "^2.4|^3.0",
-        "phpstan/phpstan": "^0.12"
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^10.0|^11.0|^12.0|^13.0",
+        "symplify/easy-coding-standard": "^13.0"
     },
-    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Voilab\\Serviceanswer\\": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Voilab\\Serviceanswer\\Test\\": "tests/"
         }
     }
 }

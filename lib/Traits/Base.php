@@ -1,31 +1,46 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Voilab\Serviceanswer\Traits;
 
-
-trait Base {
-
-    /** @var mixed */
+trait Base
+{
+    /**
+     * @var mixed
+     */
     public $body;
 
-    /** @var array<string, string> */
-    public $messages = array();
+    /**
+     * @var array<string, mixed>
+     */
+    public $messages = [];
 
-    /** @var bool */
+    /**
+     * @var bool
+     */
     public $success = true;
 
-    /** @var string|int|null */
+    /**
+     * @var string|int|null
+     */
     public $errorCode;
 
-    /** @var array<string, mixed> */
-    public $metadatas = array();
+    /**
+     * @var array<string, mixed>
+     */
+    public $metadatas = [];
 
-    /** @var array<string, mixed> */
-    public $internalDatas = array();
+    /**
+     * @var array<string, mixed>
+     */
+    public $internalDatas = [];
 
     /**
      * @return mixed
      */
-    public function getBody() {
+    public function getBody()
+    {
         return $this->body;
     }
 
@@ -34,29 +49,34 @@ trait Base {
      *
      * @return static
      */
-    public function setBody($body) {
+    public function setBody($body)
+    {
         $this->body = $body;
+
         return $this;
     }
 
     /**
-     * @return array<string, string>
+     * @return array<string, mixed>
      */
-    public function getMessages() {
+    public function getMessages()
+    {
         return $this->messages;
     }
 
     /**
      * @return bool
      */
-    public function isSuccess() {
+    public function isSuccess()
+    {
         return $this->success;
     }
 
     /**
      * @return string|int|null
      */
-    public function getErrorCode() {
+    public function getErrorCode()
+    {
         return $this->errorCode;
     }
 
@@ -65,38 +85,46 @@ trait Base {
      *
      * @return static
      */
-    public function setErrorCode($code) {
+    public function setErrorCode($code)
+    {
         $this->errorCode = $code;
+
         return $this;
     }
 
     /**
-     * @param string $message
+     * @param mixed $message
      *
      * @return static
      */
-    public function setPublicMessage($message) {
+    public function setPublicMessage($message)
+    {
         $this->messages['public'] = $message;
+
         return $this;
     }
 
     /**
-     * @param string $message
+     * @param mixed $message
      *
      * @return static
      */
-    public function setDeveloperMessage($message) {
+    public function setDeveloperMessage($message)
+    {
         $this->messages['dev'] = $message;
+
         return $this;
     }
 
     /**
-     * @param string $message
+     * @param mixed $message
      *
      * @return static
      */
-    public function setEmptyBodyMessage($message) {
+    public function setEmptyBodyMessage($message)
+    {
         $this->messages['empty'] = $message;
+
         return $this;
     }
 
@@ -106,8 +134,10 @@ trait Base {
      *
      * @return static
      */
-    public function setMetadata($key, $value) {
+    public function setMetadata($key, $value)
+    {
         $this->metadatas[$key] = $value;
+
         return $this;
     }
 
@@ -116,15 +146,18 @@ trait Base {
      *
      * @return static
      */
-    public function setMetadatas($metadatas) {
+    public function setMetadatas($metadatas)
+    {
         $this->metadatas = $metadatas;
+
         return $this;
     }
 
     /**
      * @return array<string, mixed>
      */
-    public function getMetadatas() {
+    public function getMetadatas()
+    {
         return $this->metadatas;
     }
 
@@ -133,7 +166,8 @@ trait Base {
      *
      * @return mixed
      */
-    public function getMetadata($key) {
+    public function getMetadata($key)
+    {
         return $this->metadatas[$key];
     }
 
@@ -143,8 +177,10 @@ trait Base {
      *
      * @return static
      */
-    public function setInternalData($key, $value) {
+    public function setInternalData($key, $value)
+    {
         $this->internalDatas[$key] = $value;
+
         return $this;
     }
 
@@ -153,15 +189,18 @@ trait Base {
      *
      * @return static
      */
-    public function setInternalDatas($datas) {
+    public function setInternalDatas($datas)
+    {
         $this->internalDatas = $datas;
+
         return $this;
     }
 
     /**
      * @return array<string, mixed>
      */
-    public function getInternalDatas() {
+    public function getInternalDatas()
+    {
         return $this->internalDatas;
     }
 
@@ -170,14 +209,16 @@ trait Base {
      *
      * @return mixed
      */
-    public function getInternalData($key) {
+    public function getInternalData($key)
+    {
         return $this->internalDatas[$key];
     }
 
     /**
      * @return bool
      */
-    public function isEmpty() {
+    public function isEmpty()
+    {
         return empty($this->body);
     }
 }

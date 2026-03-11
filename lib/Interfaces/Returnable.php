@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Voilab\Serviceanswer\Interfaces;
 
-
-interface Returnable {
-
+interface Returnable
+{
     /**
      * Retrieve the content of the returned object
      *
@@ -21,29 +23,34 @@ interface Returnable {
     /**
      * Get all messages
      *
-     * @return array<string, string>
+     * @return array<string, mixed>
      */
     public function getMessages();
 
     /**
      * Get a specific message
      *
-     * @param string $type
-     * @return string|null
+     * @param string|null $type
+     * @return mixed
      */
     public function getMessage($type = null);
 
     /**
      * Get an error code
      *
-     * @return int
+     * @return string|int|null
      */
     public function getErrorCode();
 
     /**
      * Récupération des métadonnées de la réponse
      *
-     * @return mixed[]
+     * @return array<string, mixed>
      */
     public function getMetadatas();
-} 
+
+    /**
+     * @return bool
+     */
+    public function isEmpty();
+}
